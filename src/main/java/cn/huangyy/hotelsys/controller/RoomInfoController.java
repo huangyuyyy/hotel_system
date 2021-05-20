@@ -16,12 +16,13 @@ public class RoomInfoController {
     @Resource
     private RoomInfoService roomService;
 
-    @GetMapping("findRooms/{current}/{limit}/{type}/{isFree}")
+    @GetMapping({"findRooms/{current}/{limit}/{type}/{isFree}/{name}","findRooms/{current}/{limit}/{type}/{isFree}"})
     public DataResult getRooms(@PathVariable long current,
-                                  @PathVariable long limit,
-                                  @PathVariable int type,
-                                  @PathVariable int isFree){
-        Map<String,Object> map=roomService.getRoomList(current,limit,type,isFree);
+                               @PathVariable long limit,
+                               @PathVariable int type,
+                               @PathVariable int isFree,
+                               @PathVariable(required = false) String name){
+        Map<String,Object> map=roomService.getRoomList(current,limit,type,isFree,name);
         return DataResult.ok().data(map);
     }
 

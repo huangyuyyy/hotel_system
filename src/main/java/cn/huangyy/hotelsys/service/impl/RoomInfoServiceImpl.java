@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.Map;
 public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> implements RoomInfoService {
 
     @Override
-    public Map<String, Object> getRoomList(long current, long limit, int type, int isFree) {
+    public Map<String, Object> getRoomList(long current, long limit, int type, int isFree,String name) {
         Map<String,Object> map=new HashMap<>();
         QueryWrapper<RoomInfo> wrapper=new QueryWrapper<>();
         if (type==1) wrapper.eq("type",1);
@@ -27,6 +28,7 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> i
         else if (type==3) wrapper.eq("type",3);
         if (isFree==0) wrapper.eq("is_free",0);
         else if (isFree==1) wrapper.eq("is_free",1);
+        if (!StringUtils.isEmpty(name)) wrapper.like("name",name);
         wrapper.orderByAsc("name");
         Page<RoomInfo> page=new Page<>(current,limit);
         baseMapper.selectPage(page, wrapper);
