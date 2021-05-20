@@ -16,13 +16,22 @@ public class RoomInfoController {
     @Resource
     private RoomInfoService roomService;
 
-    @PostMapping("findAllUser/{current}/{limit}/{type}/{isFree}")
-    public DataResult findAllUser(@PathVariable long current,
+    @GetMapping("findRooms/{current}/{limit}/{type}/{isFree}")
+    public DataResult getRooms(@PathVariable long current,
                                   @PathVariable long limit,
                                   @PathVariable int type,
                                   @PathVariable int isFree){
         Map<String,Object> map=roomService.getRoomList(current,limit,type,isFree);
         return DataResult.ok().data(map);
+    }
+
+    @PostMapping("addRoom/{name}/{type}/{window}/{area}")
+    public DataResult addRoom(@PathVariable String name,
+                              @PathVariable int type,
+                              @PathVariable int window,
+                              @PathVariable int area){
+        boolean insert=roomService.addRoom(name,type,window,area);
+        return insert?DataResult.ok():DataResult.error();
     }
 
 

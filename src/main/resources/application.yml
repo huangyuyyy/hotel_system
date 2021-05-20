@@ -14,7 +14,7 @@ spring:
     time-zone: GMT+8
 
 mybatis-plus:
-  mapper-locations: classpath:cn/huangyy/notepad/mapper/xml/*.xml
+  mapper-locations: classpath:cn/huangyy/hotelsys/mapper/xml/*.xml
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 

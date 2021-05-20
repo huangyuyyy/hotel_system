@@ -27,6 +27,7 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> i
         else if (type==3) wrapper.eq("type",3);
         if (isFree==0) wrapper.eq("is_free",0);
         else if (isFree==1) wrapper.eq("is_free",1);
+        wrapper.orderByAsc("name");
         Page<RoomInfo> page=new Page<>(current,limit);
         baseMapper.selectPage(page, wrapper);
         List<RoomInfo> records = page.getRecords();
@@ -34,5 +35,30 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> i
         map.put("total",total);
         map.put("records",records);
         return map;
+    }
+
+    @Override
+    public boolean addRoom(String name, int type,int window,int area) {
+        RoomInfo room=new RoomInfo();
+        room.setName(name);
+        room.setRoomWindow(window);
+        room.setIsFree(1);
+        room.setArea(area);
+        room.setMemberId("0000");
+        if (type==1){
+            room.setType(1);
+            room.setPrice(150);
+            room.setImage("https://edu-hyy.oss-cn-guangzhou.aliyuncs.com/roomImg/room1.jpg");
+        }else if (type==2){
+            room.setType(2);
+            room.setPrice(180);
+            room.setImage("https://edu-hyy.oss-cn-guangzhou.aliyuncs.com/roomImg/room2.jpg");
+        }else if (type==3){
+            room.setType(3);
+            room.setPrice(210);
+            room.setImage("https://edu-hyy.oss-cn-guangzhou.aliyuncs.com/roomImg/room3.jpg");
+        }
+        int insert = baseMapper.insert(room);
+        return insert!=0;
     }
 }
