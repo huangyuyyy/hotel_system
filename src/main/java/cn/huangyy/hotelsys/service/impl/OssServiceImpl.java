@@ -75,7 +75,6 @@ public class OssServiceImpl implements OssService {
 
             // 删除文件。如需删除文件夹，请将ObjectName设置为对应的文件夹名称。如果文件夹非空，则需要将文件夹下的所有object删除后才能删除该文件夹。
             ossClient.deleteObject(bucketName, url);
-            System.out.println(1111);
             // 关闭OSSClient。
             ossClient.shutdown();
             return true;
