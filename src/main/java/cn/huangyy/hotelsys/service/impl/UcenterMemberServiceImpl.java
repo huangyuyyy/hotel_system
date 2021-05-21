@@ -32,7 +32,6 @@ import java.util.*;
 @Transactional
 public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, UcenterMember> implements UcenterMemberService {
 
-
     @Override
     public String login(MemberLoginVo member) {
 
@@ -63,7 +62,6 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         String password = registerVo.getPassword();
         String nickname = registerVo.getNickname();
 
-
         if (StringUtils.isEmpty(mobile)||StringUtils.isEmpty(password)||StringUtils.isEmpty(nickname))
             return "有信息尚未填写，须填写完成注册！";
 
@@ -91,7 +89,6 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         int update = baseMapper.updateById(member);
         return update!=0;
     }
-
 
     @Override
     public Map<String, Object> findAllUser(String id, long current, long limit, FindAllUserVo userVo) {
@@ -122,6 +119,4 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         map.put("records",records);
         return map;
     }
-
-
 }
