@@ -1,11 +1,9 @@
 package cn.huangyy.hotelsys.service.impl;
 
-
 import cn.huangyy.hotelsys.entity.UcenterMember;
 import cn.huangyy.hotelsys.entity.vo.FindAllUserVo;
 import cn.huangyy.hotelsys.entity.vo.MemberLoginVo;
 import cn.huangyy.hotelsys.entity.vo.RegisterVo;
-
 import cn.huangyy.hotelsys.mapper.UcenterMemberMapper;
 import cn.huangyy.hotelsys.service.UcenterMemberService;
 import cn.huangyy.hotelsys.utils.JwtUtils;
@@ -16,7 +14,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-
 
 import java.util.*;
 
