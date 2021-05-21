@@ -1,6 +1,5 @@
 package cn.huangyy.hotelsys.service.impl;
 
-
 import cn.huangyy.hotelsys.service.OssService;
 import cn.huangyy.hotelsys.utils.ConstantUtils;
 import com.aliyun.oss.OSS;
@@ -85,7 +84,6 @@ public class OssServiceImpl implements OssService {
             e.printStackTrace();
             return false;
         }
-
     }
 
     @Override
