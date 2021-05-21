@@ -69,8 +69,7 @@ public class OssServiceImpl implements OssService {
         String accessKeyId = ConstantUtils.KEY_ID;
         String accessKeySecret = ConstantUtils.KEY_SECRET;
         String bucketName = ConstantUtils.BUCKET_NAME;
-        System.out.println(url);
-    // 创建OSSClient实例。
+        // 创建OSSClient实例。
         try {
             OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
 
