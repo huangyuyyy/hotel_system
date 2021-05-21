@@ -97,9 +97,7 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         QueryWrapper<UcenterMember> wrapper=new QueryWrapper<>();
 
         //判断类型
-        if (style==1) wrapper.eq("is_vip",1);
-        else if (style==2) wrapper.eq("is_admin",1);
-        else if (style==3) wrapper.eq("is_disabled",1);
+        if (style==3) wrapper.eq("is_disabled",1);
 
         //判断是否存在
         if (!StringUtils.isEmpty(mobile)) wrapper.like("mobile",mobile);
